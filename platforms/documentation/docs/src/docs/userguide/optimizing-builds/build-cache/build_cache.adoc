@@ -274,6 +274,8 @@ include::sample[dir="snippets/optimizing-builds/build-cache/cacheable-bundle/gro
 
 You can configure the build cache by using the link:{groovyDslPath}/org.gradle.api.initialization.Settings.html#org.gradle.api.initialization.Settings:buildCache(org.gradle.api.Action)[Settings.buildCache(org.gradle.api.Action)] block in `settings.gradle`.
 
+Configuring local or remote build cache backends does not enable build caching for the build. You must also enable the build cache globally with `--build-cache` or by setting `org.gradle.caching=true` in `gradle.properties`; see <<#sec:build_cache_enable,Enable the Build Cache>>. The `enabled` setting on an individual cache controls whether that cache can be used when build caching is enabled.
+
 Gradle supports a `local` and a `remote` build cache that can be configured separately.
 When both build caches are enabled, Gradle tries to load build outputs from the local build cache first, and then tries the remote build cache if no build outputs are found.
 If outputs are found in the remote cache, they are also stored in the local cache, so next time they will be found locally.
